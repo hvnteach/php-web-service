@@ -1,0 +1,69 @@
+<?xml version ='1.0' encoding ='UTF-8' ?> 
+<definitions name='Gif' 
+  targetNamespace='http://webservice.dev/soap/gif' 
+  xmlns:tns='http://webservice.dev/soap/gif' 
+  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+  xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+  xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/' 
+  xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+  xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+
+<message name='getGifRequest'> 
+  <part name='action' type='xsd:string'/> 
+</message> 
+<message name='getGifResponse'> 
+  <part name='Result' type='xsd:string'/> 
+</message> 
+
+<message name='getTestMessageRequest'> 
+  <part name='testMessage' type='xsd:string'/> 
+</message> 
+<message name='getTestMessageResponse'> 
+  <part name='resultTestMessage' type='xsd:string'/> 
+</message> 
+
+
+<portType name='GifPortType'> 
+  <operation name='getGifs'> 
+    <input message='tns:getGifRequest'/> 
+    <output message='tns:getGifResponse'/> 
+  </operation> 
+  <operation name='getTestMessage'> 
+    <input message='tns:getTestMessageRequest'/> 
+    <output message='tns:getTestMessageResponse'/> 
+  </operation> 
+</portType> 
+
+
+
+<binding name='GifBinding' type='tns:GifPortType'> 
+  <soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http'/> 
+
+  <operation name='getGifs'> 
+    <soap:operation soapAction='urn:localhost-gif#getGifs'/> 
+    <input> 
+      <soap:body use='encoded' namespace='urn:localhost-gif' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </input> 
+    <output> 
+      <soap:body use='encoded' namespace='urn:localhost-gif' encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </output> 
+  </operation>
+
+  <operation name='getTestMessage'> 
+    <soap:operation soapAction='urn:localhost-gif#getTestMessage'/> 
+    <input> 
+      <soap:body use='literal'/> 
+    </input> 
+    <output> 
+      <soap:body use='literal'/> 
+    </output> 
+  </operation> 
+</binding> 
+
+<service name='GifService'> 
+  <port name='GifPort' binding='GifBinding'> 
+    <soap:address location='http://webservice.dev/soap/gif-soap-server.php'/> 
+  </port> 
+</service>
+
+</definitions>
