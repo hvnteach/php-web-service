@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Demo Webservice</title>
+</head>
+
+<body>
+<h1>Soap  Webservice</h1>
+<b><font color=green>This demo connects to localhost</font></b><br>
+	
+<Form action="Client.php" method="POST">
+	Action:<br>
+	<Select name="Action">
+		<Option value="all">Get All</Option>
+		<Option value="rand">Random</Option>
+	</Select>
+	<Input type="submit" value="Invoke">
+	<br><input type="checkbox" name="Debug" id="Debug" checked> <label for="Debug">Make Debug Output</label>
+</Form>
+<br/>
+<br/>
+<b><font color=green>This demo connects to ConversionRate</font></b><br>
+Get conversion rate from one currency to another currency 
+	
+<Form action="Client_Exchange.php" method="POST">
+	FromCurrency: <input class="frmInput" type="text" size="50" name="FromCurrency"><br/>
+    ToCurrency: <input class="frmInput" type="text" size="50" name="ToCurrency"><br/>
+    Method: <Select name="method">
+		<Option value="soap">SOAP</Option>
+		<Option value="post">http post</Option>
+	</Select>
+	<br><input type="checkbox" name="Debug" id="Debug" checked> <label for="Debug">Make Debug Output</label>
+    <input type="submit" value="Invoke" class="button">
+</Form>
+</body>
+</html>
